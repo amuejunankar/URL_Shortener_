@@ -1,0 +1,33 @@
+body {
+    background-color: #E8FEE7;
+    text-align: center;
+    justify-content: center;
+    display: inline;
+    font-size: 24px;
+}
+
+.text1 {
+    text-align:center;
+    font-family: 'Cairo',sans-serif;
+    font-size:45px;
+    margin-top: 6%;
+}
+
+.home-btn {
+    margin-left: 48%;
+    padding: 12px 20px;
+    background-color: black;
+    color: #E8FEE7;
+    border-radius: 6px;
+    border: 1px solid #3cfe31;
+    outline: 0;
+    cursor: pointer;
+    font-size: medium;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            
+}
+
+.home-btn:hover {
+    background-color: #1f7e7a;
+    
+}
