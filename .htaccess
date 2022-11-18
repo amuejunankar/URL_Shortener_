@@ -1,0 +1,10 @@
+
+#  To get links which will be redirected to a link which is already present
+#  EX > user enetered web2db.com/4g6d
+#  Then we get that "4g6d" 
+#  We can redirect to full link of 4g6d
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ insert.php?q=$1 [QSA,L]
