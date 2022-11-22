@@ -17,6 +17,7 @@ body {
     outline: none;
     border: 1px solid #86868e;
     font-size: medium;
+    margin-bottom: 4%;
 }
 
 .btn {
@@ -34,4 +35,10 @@ body {
 
 .btn:hover {
     background-color: #db69ed;
+}
+
+.message {
+    font-size: medium;
+    color: #000000;
+    display: none;
 }

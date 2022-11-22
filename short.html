@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <h1 style="margin-top: 11%;
+                font-family: 'Cairo',sans-serif;
+                font-size:50px">URL Shorty</h1>
+                
+    <div class="wrapper">  
+
+        <form name="urlForm" action="insert.php" method="POST">
+            <input type="url" name="fullLink" required class="input" id="textPaste"
+                    value="shortLink here" readonly/>
+            <button class="btn" value="submit" type="submit" id="submit" name="submit" onclick="submitForm()" 
+                    >Copy</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
