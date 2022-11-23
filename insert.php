@@ -1,106 +1,56 @@
 <?php 
 session_start();
+// *******************************************************************
+// ? 1ST PART : Redirect User to FullLink using shortLink
 
 
 // * When user will search with short link !!
 
 $conn = new mysqli('localhost','root','','urlDB');
 
+// after slash value store in "l"
 $l = $_GET['q'];
 echo "$l, ";
 
-// Data present or not in DB
-$searchInDB =mysqli_query($conn,"SELECT * FROM `urlDBT` WHERE fullLink='$l'");
-$duplicateCount1 = mysqli_num_rows($searchInDB);
+// ? if (true) > search,grab,redirect
+// ? else (false) > redirect to HomePage
 
-// --------------------------------------------
-// ? Need Work Here
+echo gettype($l)."\n";
 
-if ($duplicateCount1 == 0) {
-    echo "Not Found in DB";
-} else {
-    echo "Found";
-}
-// --------------------------------------------
-// die();
+if ($l != NULL) {
 
-$fullLink = $_POST['fullLink'];
-$shortLink = $_POST['shortLink'];
-
-// Database Connection
-
-$conn = new mysqli('localhost','root','','urlDB');
-if($conn->connect_error) {
-    die('Connection Failed');
-
-} else {
+    $shortAdd = "YourLink/$l";
+    echo $shortAdd;
+    // Data present or not in DB
+    $searchInDB ="";
+    $searchInDB =mysqli_query($conn,"SELECT `fullLink` FROM `urldbt` WHERE shortLink='$shortAdd'");
     
-    // Collect Duplicates
-    
-    $result = mysqli_query($conn, "SELECT * FROM urlDBT WHERE fullLink='$_POST[fullLink]'"); // execute this()
-    $duplicateCount = mysqli_num_rows($result);  // will collect all the rows whose having the dupliactes.
-
-
-    //check duplicate condition
-    if ($duplicateCount == 0) {
-
-        // Generate Random String untill unique shortlink generated
-        
-        do {
-            
-            $randomString = '';
-        
-            $n = 1;
-            function getRandomString($n)
-            {
-                $characters = 'XYZ';
-                $randomString = 'shorty.io/';
-            
-                for ($i = 0; $i < $n; $i++) {
-                    $index = rand(0, strlen($characters) - 1);
-                    $randomString .= $characters[$index];
-                }
-                return $randomString;
-            }
-            $shortLink = getRandomString($n);
-            echo $shortLink;
-            
-            $result = mysqli_query($conn, "SELECT * FROM urlDBT WHERE shortLink='$shortLink'"); // execute this()
-            $duplicateCount2 = mysqli_num_rows($result);  // will collect all the rows whose having the dupliactes.
-    
-            } while ($duplicateCount2 >= 1);
-
-        // ---------------------------------------------------------------------
-        
-        
-        
-        +// ? Add Data to Database
-        $stmt = $conn->prepare("insert into urlDBT(fullLink, shortLink) values(?,?)");
-        // ? bind data with proper DataTypes
-        $stmt->bind_param("ss", $fullLink,$shortLink);
-        $stmt->execute();
-       
-        // ---------------------------------------------------------------------
-        
-        // ? Show success msg on Site.>>
-
-        echo '<script> alert("Form Submitted")</script>';
-
-        // header('location: short.html');
-
-        // ? Terminate the DB connection
-        $stmt->close();
-        $conn->close();
-        die();
-
-    } else {
-        
-        $conn->close(); // To terminate Connection to DB
-        echo '<script> alert("Duplicate Found") </script>';
-        die();
+    while($row = mysqli_fetch_assoc($searchInDB)) {
+        $fromLink = $row['fullLink'];
     }
     
+
+} else {
+    
+    
+
 }
+
+// from here paste
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // urlDB > DB Name
 // urlDBT > Table Name
