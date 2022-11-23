@@ -17,7 +17,11 @@ echo "$l, ";
 
 echo gettype($l)."\n";
 
-if ($l != NULL) {
+//check url/link , is link present in DB or not
+$searchShort =mysqli_query($conn,"SELECT * FROM `urldbt` WHERE shortLink='YourLink/$l'");
+$rowsCount = mysqli_num_rows($searchShort);
+
+if ($l != NULL && $rowsCount >= 1) {
 
     $shortAdd = "YourLink/$l";
     echo $shortAdd;
@@ -25,32 +29,22 @@ if ($l != NULL) {
     $searchInDB ="";
     $searchInDB =mysqli_query($conn,"SELECT `fullLink` FROM `urldbt` WHERE shortLink='$shortAdd'");
     
-    while($row = mysqli_fetch_assoc($searchInDB)) {
-        $fromLink = $row['fullLink'];
-    }
+    echo "<br>"; echo "<br>";
     
+    $row = mysqli_fetch_assoc($searchInDB);
+    $finalFullLink = $row['fullLink'];
+    echo $finalFullLink;
+
+    header('Location: '.$finalFullLink);
+    exit();
+
 
 } else {
-    
-    
+    header('Location: index.html');
 
 }
 
 // from here paste
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // urlDB > DB Name
 // urlDBT > Table Name
