@@ -85,7 +85,9 @@ if($conn->connect_error) {
         echo $finalshortLink;
 
         // ! Show it to that short.html /////NEED WORK HERE
+        echo "<br>";
 
+        echo "<h2>$finalshortLink</h2>";
         $conn->close();
         die();
     }
