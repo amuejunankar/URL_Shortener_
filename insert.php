@@ -6,7 +6,7 @@ session_start();
 // * When user will search with short link !!
 
 // $conn = new mysqli('localhost','root','','urlDB');
-$conn = new mysqli('localhost','id19638164_urldbusername','i/&+hqZY{o_3-](d','id19638164_urldbname');
+$conn = new mysqli('localhost','username','pass','dbname');
 
 
 // after slash value store in "l"
