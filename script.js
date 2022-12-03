@@ -5,4 +5,3 @@ function submitForm() {
   document.urlForm.reset();
 }
 
-

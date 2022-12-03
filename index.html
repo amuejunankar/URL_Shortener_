@@ -12,14 +12,22 @@
 </head>
 <body>
     <h1 style="margin-top: 11%;
+                color: #11b337;
+                text-decoration: none;
                 font-family: 'Cairo',sans-serif;
-                font-size:50px">URL Shorty</h1>
+                font-size:50px">
+                <a
+                style="margin-top: 11%;
+                    color: #000000;"
+                href="https://dourlshort.000webhostapp.com/">URL SHORTY</a>
+                </h1>
                 
     <div class="wrapper">
-        <form name="urlForm" action="Generate.php" method="POST">
+        <form name="urlForm" action="Generate.php" method="POST" >
             <input type="url" name="fullLink" required class="input" placeholder="Paste Your Link" id="textPaste" />
             <button class="btn" value="submit" type="submit" id="submit" name="submit" onclick="submitForm()"
             >Shorten</button>
+            
     </div>
 
     <div class="message">
@@ -27,6 +35,7 @@
     </div>
     
     <script src="script.js"></script>
+    <script type="text/javascript" src="Generate.php"></script>
 </body>
 
 </html>
